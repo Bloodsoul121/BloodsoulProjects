@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Projects</string>
+    <string name="service_name">host_apdu_service</string>
+    <string name="card_title">card_title</string>
+</resources>
