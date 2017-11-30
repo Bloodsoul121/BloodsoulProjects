@@ -9,7 +9,6 @@ import com.example.cgz.bloodsoulprojects.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobBatch;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
@@ -34,7 +33,7 @@ public class BmobActivity extends BaseActivity {
 
     private void initBmob() {
         //第一：默认初始化
-        Bmob.initialize(this, "f67416d583109e97523cedc3139895dc");
+//        Bmob.initialize(this, "f67416d583109e97523cedc3139895dc");
         // 注:自v3.5.2开始，数据sdk内部缝合了统计sdk，开发者无需额外集成，传渠道参数即可，不传默认没开启数据统计功能
         //Bmob.initialize(this, "Your Application ID","bmob");
 
