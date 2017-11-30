@@ -5,6 +5,9 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:text="data"
+        android:gravity="center"
+        android:layout_centerInParent="true"
         android:id="@+id/nfc_activity_tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
