@@ -23,12 +23,12 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //TODO 集成：1.4、初始化数据服务SDK、初始化设备信息并启动推送服务
+        // 集成：1.4、初始化数据服务SDK、初始化设备信息并启动推送服务
         // 初始化BmobSDK
         initBmob();
         // 使用推送服务时的初始化操作
         initBmobPush();
-        //TODO 集成：1.8、初始化IM SDK，并注册消息接收器
+        // 集成：1.8、初始化IM SDK，并注册消息接收器
         initBmobIM();
     }
 
