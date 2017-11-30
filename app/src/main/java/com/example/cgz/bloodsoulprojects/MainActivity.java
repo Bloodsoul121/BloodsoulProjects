@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mDatas.add("1 - NFC读卡器, 仿真卡");
         mDatas.add("2 - 集成Bmob");
         mDatas.add("3 - 集成Bmob 之 消息推送");
+        mDatas.add("4 - 集成Bmob 之 即时通讯");
     }
 
     private void clickRecyclerItem(int position) {

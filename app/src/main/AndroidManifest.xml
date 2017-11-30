@@ -33,6 +33,30 @@
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
+    <!--TODO 集成：1.3、配置Bmob平台的应用密钥-->
+    <meta-data
+        android:name="3450805428643df910c9b25e9fa213a2"
+        android:value="f67416d583109e97523cedc3139895dc" />
+
+          <!--TODO 1.4、配置IM SDK需要的权限-->
+    <!--网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 监听网络的变化 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 设备休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- sd卡存储-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--摄像头-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--录音-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--通知震动-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -126,6 +150,26 @@
 
         <activity android:name=".bmob.publish.BmobPublishActivity">
         </activity>
+        <activity android:name=".bmob.im.BmobIMActivity">
+        </activity>
+
+        <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.action.RECONNECT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="cn.bmob.newim.core.service.BmobIMService"
+            android:process=":bmobcore" />
+        <service
+            android:name="cn.bmob.newim.core.service.NotifyService"
+            android:process=":bmobcore" />
+        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+        <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
+
     </application>
 
 </manifest>
