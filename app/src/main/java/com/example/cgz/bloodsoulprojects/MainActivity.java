@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.cgz.bloodsoulprojects.bmob.BmobActivity;
 import com.example.cgz.bloodsoulprojects.nfc.NFCActivity;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private void initData() {
         mDatas.add("num - title - sub");
         mDatas.add("1 - NFC读卡器, 仿真卡");
+        mDatas.add("2 - 集成Bmob");
     }
 
     private void clickRecyclerItem(int position) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(NFCActivity.class);
                 break;
             case 2:
+                startActivity(BmobActivity.class);
                 break;
             case 3:
                 break;
