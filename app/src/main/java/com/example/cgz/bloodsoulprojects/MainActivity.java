@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.example.cgz.bloodsoulprojects.bmob.BmobActivity;
 import com.example.cgz.bloodsoulprojects.bmob.publish.BmobPublishActivity;
 import com.example.cgz.bloodsoulprojects.nfc.NFCActivity;
+import com.example.cgz.bloodsoulprojects.scrollable.ScrollableActivity;
+import com.example.cgz.bloodsoulprojects.webcomments.WebCommentsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         mDatas.add("2 - 集成Bmob");
         mDatas.add("3 - 集成Bmob 之 消息推送");
         mDatas.add("4 - 集成Bmob 之 即时通讯");
+        mDatas.add("5 - webview与recyclerview的完美结合");
+        mDatas.add("6 - ScrollableLayout - webview与recyclerview的完美结合");
     }
 
     private void clickRecyclerItem(int position) {
@@ -57,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 break;
             case 5:
+                startActivity(WebCommentsActivity.class);
                 break;
             case 6:
+                startActivity(ScrollableActivity.class);
                 break;
             case 7:
                 break;

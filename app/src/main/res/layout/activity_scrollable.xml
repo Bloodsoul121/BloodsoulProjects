@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.cgz.bloodsoulprojects.scrollable.ScrollableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollableLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cgz.bloodsoulprojects.scrollable.ScrollableActivity">
+
+    <TextView
+        android:background="#565656"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.example.cgz.bloodsoulprojects.scrollable.ScrollableLayout>
