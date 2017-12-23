@@ -12,9 +12,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.webkit.WebView;
-import android.widget.AbsListView;
 import android.widget.FrameLayout;
-import android.widget.ScrollView;
 import android.widget.Scroller;
 
 public class CustomScrollView extends FrameLayout {
@@ -119,9 +117,9 @@ public class CustomScrollView extends FrameLayout {
                 // y 滑动
                 if (updown && shiftY > shiftX && shiftY > mTouchSlop) {
                     if (isStickedTop() && !isWebViewBottom()) {
-
+                        // nothing
                     } else if (isStickedBottom() && !isRecyclerViewTop()) {
-
+                        // nothing
                     } else {
                         scrollBy(0, (int) (deltaY + 0.5));
                     }
@@ -202,7 +200,7 @@ public class CustomScrollView extends FrameLayout {
                 Log.i(TAG, "computeScroll --> IRECTION.UP");
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedTop: " + isStickedTop() + ",  isWebViewBottom: " + isWebViewBottom());
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedBottom: " + isStickedBottom() + ",  isRecyclerViewTop: " + isRecyclerViewTop());
-                // 手势向上划
+
 //                if (isWebViewBottom()) {
 //                    int deltaY = (currY - mLastScrollerY);
 //                    int toY = getScrollY() + deltaY;
@@ -214,10 +212,11 @@ public class CustomScrollView extends FrameLayout {
 //                    invalidate();
 //                }
 
+                // 手势向上划
                 if (isStickedTop()) {
                     int distance = mScroller.getFinalY() - currY;
                     int duration = mScroller.getDuration() - mScroller.timePassed();
-                    smoothScrollBy(mHeadView, getScrollerVelocity(distance, duration), distance, duration);
+                    smoothScrollBy(mHeadView, getScrollerVelocity(distance, duration));
                     mScroller.forceFinished(true);
                     invalidate();
                     return;
@@ -225,7 +224,7 @@ public class CustomScrollView extends FrameLayout {
                 if (isStickedBottom()) {
                     int distance = mScroller.getFinalY() - currY;
                     int duration = mScroller.getDuration() - mScroller.timePassed();
-                    smoothScrollBy(mBottomView, getScrollerVelocity(distance, duration), distance, duration);
+                    smoothScrollBy(mBottomView, getScrollerVelocity(distance, duration));
                     mScroller.forceFinished(true);
                     return;
                 } else {
@@ -326,17 +325,8 @@ public class CustomScrollView extends FrameLayout {
         }
     }
 
-    public void smoothScrollBy(View view, int velocityY, int distance, int duration) {
-        if (view instanceof AbsListView) {
-            AbsListView absListView = (AbsListView) view;
-            if (Build.VERSION.SDK_INT >= 21) {
-                absListView.fling(velocityY);
-            } else {
-                absListView.smoothScrollBy(distance, duration);
-            }
-        } else if (view instanceof ScrollView) {
-            ((ScrollView) view).fling(velocityY);
-        } else if (view instanceof RecyclerView) {
+    public void smoothScrollBy(View view, int velocityY) {
+        if (view instanceof RecyclerView) {
             ((RecyclerView) view).fling(0, velocityY);
         } else if (view instanceof WebView) {
             ((WebView) view).flingScroll(0, velocityY);
