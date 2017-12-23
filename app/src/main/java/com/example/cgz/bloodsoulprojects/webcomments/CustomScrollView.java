@@ -150,7 +150,7 @@ public class CustomScrollView extends FrameLayout {
                             invalidate();
                         }
 
-                        if (!allowChild && !isStickedBottom()) {
+                        if (!allowChild && !isStickedBottom() && !isStickedTop()) {
                             int action = event.getAction();
                             event.setAction(MotionEvent.ACTION_CANCEL);
                             boolean dispathResult = super.dispatchTouchEvent(event);
@@ -200,19 +200,31 @@ public class CustomScrollView extends FrameLayout {
                 Log.i(TAG, "computeScroll --> IRECTION.UP");
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedTop: " + isStickedTop() + ",  isWebViewBottom: " + isWebViewBottom());
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedBottom: " + isStickedBottom() + ",  isRecyclerViewTop: " + isRecyclerViewTop());
-
-//                if (isWebViewBottom()) {
-//                    int deltaY = (currY - mLastScrollerY);
-//                    int toY = getScrollY() + deltaY;
-//                    scrollTo(0, toY);
-//                    if (mCurrentY >= mMaxY) {
-//                        mScroller.forceFinished(true);
-//                        return;
-//                    }
-//                    invalidate();
-//                }
-
+                
                 // 手势向上划
+                if (isStickedBottom()) {
+                    int distance = mScroller.getFinalY() - currY;
+                    int duration = mScroller.getDuration() - mScroller.timePassed();
+                    smoothScrollBy(mBottomView, getScrollerVelocity(distance, duration));
+                    mScroller.forceFinished(true);
+                    return;
+                }
+
+                if (isWebViewBottom()) {
+                    int deltaY = (currY - mLastScrollerY);
+                    int toY = getScrollY() + deltaY;
+                    scrollTo(0, toY);
+                    if (mCurrentY >= mMaxY) {
+                        mScroller.forceFinished(true);
+                        return;
+                    }
+                }
+                invalidate();
+            } else {
+                Log.i(TAG, "computeScroll --> IRECTION.DOWN");
+                Log.i(TAG, "computeScroll --> IRECTION.DOWN  isStickedTop: " + isStickedTop() + ",  isWebViewBottom: " + isWebViewBottom());
+                Log.i(TAG, "computeScroll --> IRECTION.DOWN  isStickedBottom: " + isStickedBottom() + ",  isRecyclerViewTop: " + isRecyclerViewTop());
+
                 if (isStickedTop()) {
                     int distance = mScroller.getFinalY() - currY;
                     int duration = mScroller.getDuration() - mScroller.timePassed();
@@ -221,19 +233,7 @@ public class CustomScrollView extends FrameLayout {
                     invalidate();
                     return;
                 }
-                if (isStickedBottom()) {
-                    int distance = mScroller.getFinalY() - currY;
-                    int duration = mScroller.getDuration() - mScroller.timePassed();
-                    smoothScrollBy(mBottomView, getScrollerVelocity(distance, duration));
-                    mScroller.forceFinished(true);
-                    return;
-                } else {
-                    scrollTo(0, currY);
-                }
-            } else {
-                Log.i(TAG, "computeScroll --> IRECTION.DOWN");
-                Log.i(TAG, "computeScroll --> IRECTION.DOWN  isStickedTop: " + isStickedTop() + ",  isWebViewBottom: " + isWebViewBottom());
-                Log.i(TAG, "computeScroll --> IRECTION.DOWN  isStickedBottom: " + isStickedBottom() + ",  isRecyclerViewTop: " + isRecyclerViewTop());
+
                 // 手势向下划
                 if (isRecyclerViewTop()) {
                     int deltaY = (currY - mLastScrollerY);
