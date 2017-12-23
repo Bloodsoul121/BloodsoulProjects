@@ -9,12 +9,14 @@
 
     <com.example.cgz.bloodsoulprojects.webcomments.CustomScrollView
         android:background="#565859"
+        android:splitMotionEvents="false"
         android:id="@+id/customscrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.example.cgz.bloodsoulprojects.webcomments.CustomWebview
             android:id="@+id/webview"
+            android:splitMotionEvents="false"
             android:scrollbars="none"
             android:overScrollMode="never"
             android:layout_width="match_parent"
@@ -22,6 +24,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
+            android:splitMotionEvents="false"
             android:scrollbars="none"
             android:overScrollMode="never"
             android:layout_width="match_parent"

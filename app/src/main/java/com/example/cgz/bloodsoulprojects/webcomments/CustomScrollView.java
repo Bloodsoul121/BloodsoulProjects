@@ -200,7 +200,7 @@ public class CustomScrollView extends FrameLayout {
                 Log.i(TAG, "computeScroll --> IRECTION.UP");
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedTop: " + isStickedTop() + ",  isWebViewBottom: " + isWebViewBottom());
                 Log.i(TAG, "computeScroll --> IRECTION.UP  isStickedBottom: " + isStickedBottom() + ",  isRecyclerViewTop: " + isRecyclerViewTop());
-                
+
                 // 手势向上划
                 if (isStickedBottom()) {
                     int distance = mScroller.getFinalY() - currY;
@@ -215,7 +215,7 @@ public class CustomScrollView extends FrameLayout {
                     int toY = getScrollY() + deltaY;
                     scrollTo(0, toY);
                     if (mCurrentY >= mMaxY) {
-                        mScroller.forceFinished(true);
+                        Log.i(TAG, "computeScroll --> mCurrentY >= mMaxY");
                         return;
                     }
                 }
@@ -228,7 +228,8 @@ public class CustomScrollView extends FrameLayout {
                 if (isStickedTop()) {
                     int distance = mScroller.getFinalY() - currY;
                     int duration = mScroller.getDuration() - mScroller.timePassed();
-                    smoothScrollBy(mHeadView, getScrollerVelocity(distance, duration));
+                    Log.i(TAG, "computeScroll --> isStickedTop " + distance + ", " + duration + ", " + getScrollerVelocity(distance, duration));
+                    smoothScrollBy(mHeadView, -getScrollerVelocity(distance, duration));
                     mScroller.forceFinished(true);
                     invalidate();
                     return;
@@ -240,7 +241,7 @@ public class CustomScrollView extends FrameLayout {
                     int toY = getScrollY() + deltaY;
                     scrollTo(0, toY);
                     if (mCurrentY <= mMinY) {
-                        mScroller.forceFinished(true);
+                        Log.i(TAG, "computeScroll --> mCurrentY <= mMinY");
                         return;
                     }
                 }
