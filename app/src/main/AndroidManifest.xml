@@ -179,6 +179,12 @@
         </activity>
         <activity android:name=".scrollable.ScrollableActivity">
         </activity>
+        <activity android:name=".view.ViewActivity">
+        </activity>
+        <activity android:name=".view.android.SwipeRefreshLayoutActivity">
+        </activity>
+        <activity android:name=".view.android.AndroidViewActivity">
+        </activity>
     </application>
 
 </manifest>

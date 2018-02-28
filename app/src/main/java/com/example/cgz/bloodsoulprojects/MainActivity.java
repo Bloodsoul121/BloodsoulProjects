@@ -2,7 +2,6 @@ package com.example.cgz.bloodsoulprojects;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +13,13 @@ import com.example.cgz.bloodsoulprojects.bmob.BmobActivity;
 import com.example.cgz.bloodsoulprojects.bmob.publish.BmobPublishActivity;
 import com.example.cgz.bloodsoulprojects.nfc.NFCActivity;
 import com.example.cgz.bloodsoulprojects.scrollable.ScrollableActivity;
+import com.example.cgz.bloodsoulprojects.view.ViewActivity;
 import com.example.cgz.bloodsoulprojects.webcomments.WebCommentsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private List<String> mDatas = new ArrayList<>();
 
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mDatas.add("4 - 集成Bmob 之 即时通讯");
         mDatas.add("5 - webview与recyclerview的完美结合");
         mDatas.add("6 - ScrollableLayout - webview与recyclerview的完美结合");
+        mDatas.add("7 - 控件 View");
     }
 
     private void clickRecyclerItem(int position) {
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(ScrollableActivity.class);
                 break;
             case 7:
+                startActivity(ViewActivity.class);
                 break;
             case 8:
                 break;
@@ -203,10 +205,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    private void startActivity(Class clazz) {
-        startActivity(new Intent(this, clazz));
     }
 
 }
